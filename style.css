@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #1a1a2e;
+    /* Dark premium background */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-container {
+    position: relative;
+    width: 1024px;
+    height: 768px;
+    /* Glassmorphism effect */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+#connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* Let clicks pass through to nodes */
+    z-index: 0;
+}
+
+.node {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    /* Center based on coordinate */
+    cursor: pointer;
+    z-index: 1;
+    transition: top 0.3s ease, left 0.3s ease, background-color 0.2s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.node:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    z-index: 2;
+}
+
+#score-display {
+    /* Legacy ID, kept if needed, but overridden below */
+}
+
+#combo-display {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    /* Moved to left */
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD740;
+    text-shadow: 0 0 10px rgba(255, 215, 64, 0.5);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* UI Header */
+#ui-header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    z-index: 10;
+    pointer-events: none;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#level-display,
+#moves-display,
+#score-display {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    display: block;
+    /* Ensure they stack */
+    position: static;
+    /* Override legacy absolute */
+}
+
+/* Message Overlay */
+#message-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s;
+}
+
+#message-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #00E676;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
+}
+
+#message-btn {
+    padding: 15px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    background: #448AFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(68, 138, 255, 0.4);
+}
+
+#message-btn:hover {
+    transform: scale(1.05);
+    background: #2979FF;
+    box-shadow: 0 6px 20px rgba(41, 121, 255, 0.6);
+}
+
+/* Utility */
+.hidden {
+    display: none !important;
+}
